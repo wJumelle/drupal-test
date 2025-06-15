@@ -1,5 +1,6 @@
 # Installation de la version 11 de Drupal
 Début du projet 15/06/2025.
+Pour l'installation de l'ensemble des pré-requis j'ai suivi le [**guide Drupal**](https://www.drupal.org/docs/getting-started/installing-drupal/install-drupal-using-ddev-for-local-development).
 
 ## Pré-requis
 
@@ -41,3 +42,36 @@ Dans notre Docker on se retrouve alors avec :
 * ddev-ssh-agent
 * ddev-project
 * ddev-router
+
+## Redémarrage du projet à chaque lancement de session de développement
+
+```
+cd project
+ddev start
+```
+
+`ddev start` va :
+* Lancer les conteneurs Docker (web, db, etc.)
+* Donner l'URL de développement (ex: https://project.ddev.site)
+
+Puis on exécute `ddev launch` pour ouvrir le site affiché dans le terminal.
+
+## Commandes utiles
+
+* `ddev start` => redémarrer le projet
+* `ddev stop` => arrêter le projet du dossier en cours
+* `ddev poweroff`  => arrêter tous les projets DDEV en cours
+* `ddev ssh` => accès shell dans le conteneur web
+* `ddev drush cr` => vider les caches Drupal
+* `ddev drush uli` => connexion admin rapide
+* `composer update` => mise à jour des dépendances
+
+## Structure du projet sous /project
+
+* `.ddev/` => configuration DDEV (PHP version, MySQL, etc.)
+* `web/` => racine publique Drupal (avec index.php)
+* `composer.json` => dépendances PHP/Drupal
+
+## Environnement local
+
+Il faudra créer un fichier `settings.local.php` en suivant le chemin `project/web/sites/default/`.
